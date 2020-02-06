@@ -1,0 +1,4 @@
+flask
+deeppavlov
+flask_ngrok
+wikipedia
