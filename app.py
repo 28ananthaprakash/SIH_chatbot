@@ -36,8 +36,9 @@ def ask():
     elif (message.find("created")!=-1 and message.find("you")!=-1) or message.find("ananthaprakash")!=-1:
       bot_response = "I was created by SIH team for Military Purpose"
     else:
-      bot_response = str(model_qa_ml([context],[message])[0][-1])
-      if bot_response =="":
+      ans = model_qa_ml([context],[message])
+      bot_response = str(ans[0][-1])
+      if bot_response =="" or float(ans[-1][-1]) < 1.0:
         context_temp = w.summary(message)
         bot_response = str(model_qa_ml([context_temp],[message])[0][-1])
     return jsonify({'status':'OK','answer':bot_response})
